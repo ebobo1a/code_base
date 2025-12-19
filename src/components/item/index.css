@@ -1,0 +1,15 @@
+.name {
+  font-size: 40px;
+  word-wrap: break-word;
+  line-height: 40px;
+}
+
+.card {
+  width: 100%;
+  background: var(--grey-orange);
+  padding: 20px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
