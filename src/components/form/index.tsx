@@ -48,7 +48,7 @@ function MyForm(props: { setResults: React.Dispatch<SetStateAction<Booking[]>> }
     setDate(parts.join('.'));
   };
 
-  // Валидируем заезд (только когда дата введена полностью)
+  
   useEffect(() => {
     if (!dateInput1) {
       setCheckInError('');
@@ -63,7 +63,7 @@ function MyForm(props: { setResults: React.Dispatch<SetStateAction<Booking[]>> }
     setCheckInError(res.isValid ? '' : res.message);
   }, [dateInput1]);
 
-  // Валидируем выезд (зависит от заезда)
+  
   useEffect(() => {
     if (!dateInput2) {
       setCheckOutError('');
@@ -81,7 +81,7 @@ function MyForm(props: { setResults: React.Dispatch<SetStateAction<Booking[]>> }
   const handleSubmit = (event: { preventDefault: () => void }) => {
     event.preventDefault();
 
-    // финальная проверка перед поиском
+    
     if (dateInput1 && dateInput1.length === 10) {
       const r1 = validateDate(dateInput1);
       setCheckInError(r1.isValid ? '' : r1.message);
