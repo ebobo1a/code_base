@@ -1,7 +1,7 @@
 import { errors } from '../utils/dictionarty';
 
 type ValidateDateOptions = {
-  /** Минимально допустимая дата (например, дата заезда для даты выезда) */
+  
   minDate?: string;
 };
 
@@ -19,7 +19,7 @@ function parseDDMMYYYY(dateString: string): { date: Date; isPatternOk: boolean }
   const [day, month, year] = dateString.split('.').map(Number);
   const d = new Date(year, month - 1, day);
 
-  // защита от невозможных дат типа 31.02.2025
+  
   if (d.getDate() !== day || d.getMonth() !== month - 1 || d.getFullYear() !== year) {
     return { date: new Date('Invalid'), isPatternOk: true };
   }
@@ -51,7 +51,7 @@ export function validateDate(
 
   const parsed = parseDDMMYYYY(dateString);
 
-  // формат не совпал
+  
   if (!parsed || parsed.isPatternOk === false) {
     return {
       isValid: false,
@@ -61,7 +61,7 @@ export function validateDate(
 
   const inputDate = parsed.date;
 
-  // дата невозможна (31.02 и т.п.)
+  
   if (Number.isNaN(inputDate.getTime())) {
     return {
       isValid: false,
@@ -78,9 +78,9 @@ export function validateDate(
     };
   }
 
-  // сравнение с датой заезда (или любой minDate)
+  
   if (options.minDate) {
-    // minDate валидируем тем же парсером, но без возврата ошибок пользователю (это входные данные из формы)
+    
     const parsedMin = parseDDMMYYYY(options.minDate);
 
     if (parsedMin && parsedMin.isPatternOk) {
